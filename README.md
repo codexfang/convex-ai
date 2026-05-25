@@ -1,4 +1,4 @@
-# CONVEX AI - Natural Language Unit Converter
+# CONVEX AI
 
 Convex AI is a fully static React + Vite web app for fast natural language unit conversion. Type queries like `72 F to C`, `5 miles to km`, `100 usd to eur`, or `3 hours to seconds` and get an instant parsed breakdown, formula, and conversion result.
 
