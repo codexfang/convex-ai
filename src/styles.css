@@ -14,6 +14,22 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 700px 500px at 30% 20%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 500px 400px at 80% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 button,
@@ -42,10 +58,14 @@ button {
 
 .hero h1 {
   margin: 0;
-  color: #111827;
   font-size: clamp(2rem, 5vw, 4.5rem);
   line-height: 0.95;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 40%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(37, 99, 235, 0.15));
 }
 
 .hero p {
@@ -73,11 +93,18 @@ button {
   padding: 12px 16px;
   min-height: 44px;
   font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.mode-toggle button:not(.active):hover {
+  background: #eef2ff;
+  color: #2563eb;
 }
 
 .mode-toggle button.active {
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
   color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
 }
 
 .workspace {
@@ -96,6 +123,21 @@ button {
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 16px 40px rgba(22, 34, 51, 0.08);
+  position: relative;
+}
+
+.control-panel::before,
+.result-panel::before,
+.manual-card::before,
+.parse-card::before,
+.input-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), transparent 40%, transparent 60%, rgba(99, 102, 241, 0.12));
+  z-index: -1;
+  pointer-events: none;
 }
 
 .control-panel {
@@ -148,7 +190,7 @@ button {
 .manual-card input:focus,
 .manual-card select:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 0 16px rgba(37, 99, 235, 0.08);
 }
 
 .examples {
@@ -165,6 +207,14 @@ button {
   color: #334155;
   padding: 8px 14px;
   font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.examples button:hover {
+  border-color: #2563eb;
+  background: #eef2ff;
+  color: #2563eb;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
 }
 
 .manual-card {
@@ -220,7 +270,10 @@ button {
 }
 
 .eyebrow {
-  color: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 0.82rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -244,7 +297,10 @@ button {
 }
 
 .result-panel h2 strong {
-  color: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 1.45rem;
 }
 
@@ -253,10 +309,16 @@ button {
   min-height: 42px;
   border: 0;
   border-radius: 8px;
-  background: #172033;
+  background: linear-gradient(135deg, #172033, #1e3a5f);
   color: #ffffff;
   padding: 10px 14px;
   font-weight: 800;
+  transition: all 0.15s ease;
+}
+
+.copy-button:hover {
+  background: linear-gradient(135deg, #1e3a5f, #2563eb);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .formula {

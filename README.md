@@ -25,6 +25,4 @@ The parser in `src/engine/parser.js` normalizes user input, extracts the first n
 - CSS
 - Intl API concepts for locale-aware number formatting
 
-## License
 
-MIT
